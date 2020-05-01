@@ -1,0 +1,58 @@
+openapi: 3.0.0
+info:
+  version: "1.0.0"
+  title: ML Project
+  description: predicting the final grades of students based on alcohol consumption
+  termsOfService: 'http://swagger.io/terms/'
+  contact:
+    name: REST Service Linear Regression Example
+  license:
+    name: Apache
+paths:
+  /data/output/<output>:
+    get:
+      tags:
+        - DATA
+      operationId: data.download
+      description: Downloads data from url
+      responses:
+        "200":
+          description: "Data info collected"
+  /experiment/regression:
+    get:
+      tags:
+        - LR
+      operationId: regression.regression
+      description: perform linear regression on data
+      responses:
+        "200":
+          description: "performed linear regression successfully"
+  /experiment/regression/<arg1>:
+    get:
+      tags:
+        - LR
+      operationId: regression.regression_dyn
+      description: perform linear regression on data
+      responses:
+        "200":
+          description: "performed linear regression successfully"
+  /experiment/regression/barplot:
+     get:
+       tags:
+         - LR
+       operationId: regression.plot_pred
+       description: create bar plot of actual vs predicted values
+       responses: 
+         "200":
+           description: "created bar plot successfully"
+  /experiment/regression/barplot/<arg1>:
+     get:
+       tags:
+         - LR
+       operationId: regression.plot_pred_dyn
+       description: create bar plot of actual vs predicted values
+       responses:
+         "200":
+           description: "created bar plot successfully"
+servers:
+  - url: 'http://localhost:8080/'
